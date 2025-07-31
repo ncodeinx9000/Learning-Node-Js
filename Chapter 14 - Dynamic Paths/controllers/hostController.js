@@ -40,13 +40,18 @@ exports.postAddHome = (req, res, next) => {
   const { houseName, price, location, rating, photoUrl } = req.body;
   const home = new Home(houseName, price, location, rating, photoUrl);
   home.save();
-  res.redirect("host/host-home-list");
+  res.redirect("/host/host-home-list");
 };
 
 exports.postEditHome = (req, res, next) => {
   const { id, houseName, price, location, rating, photoUrl } = req.body;
-  home.id = id;
   const home = new Home(houseName, price, location, rating, photoUrl);
+  home.id = id;
   home.save();
-  res.redirect("host/host-home-list");
+  res.redirect("/host/host-home-list");
+};
+
+exports.postDeleteHome = (req, res, next) => {
+  const homeId = req.params.homeId;
+  res.redirect("/host/host-home-list");
 };
